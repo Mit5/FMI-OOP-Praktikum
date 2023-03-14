@@ -4,32 +4,30 @@
 #include "Time.h"
 #include "Event.h"
 
-
-using namespace std;
-
 int main()
 {
-    int n;
-    cin >> n;
+    int n,count=0;
+    std::cin >> n;
     Time sumTime;
+    Event* events = new Event[n];
     for (int i = 0; i < n; i++)
     {
         char title[256], organizer[256];
         int start_time_hour, start_time_minute, start_time_second, end_time_hour,end_time_minute, end_time_second;
-        cout << "\nEvent title >\n";
-        cin.ignore();
-        cin.getline(title, 256);
+        std::cout << "\nEvent title >\n";
+        std::cin.ignore();
+        std::cin.getline(title, 256);
 
-        cout << "Event oragniser >\n";
-        cin.ignore();
-        cin.getline(organizer, 256);
+        std::cout << "Event oragniser >\n";
+        std::cin.ignore();
+        std::cin.getline(organizer, 256);
 
-        cout << "Start time >\n";
-        cin >> start_time_hour >> start_time_minute >> start_time_second;
+        std::cout << "Start time >\n";
+        std::cin >> start_time_hour >> start_time_minute >> start_time_second;
         Time start_time(start_time_hour, start_time_minute, start_time_second);
 
-        cout << "End time >\n";
-        cin >> end_time_hour >> end_time_minute >> end_time_second;
+        std::cout << "End time >\n";
+        std::cin >> end_time_hour >> end_time_minute >> end_time_second;
         Time end_time(end_time_hour, end_time_minute, end_time_second);
         
         Event myEvent(title, organizer, start_time, end_time);
@@ -38,6 +36,7 @@ int main()
         sumTime.add_time(myEvent.get_duration());
     }
     sumTime.display();
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
