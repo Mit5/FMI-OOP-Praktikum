@@ -14,7 +14,6 @@ Set::Set(Set const& other)
 	this->numberOfElements = other.numberOfElements;
 	delete[] this->elements;
 	this->elements = other.elements;
-	delete[] other.elements;
 }
 
 Set& Set::operator= (Set const& other)
@@ -35,7 +34,7 @@ Set::~Set()
 	delete[] elements;
 }
 
-bool Set::contains(int element)
+bool Set::contains(int element) const
 {
 	for (int i = 0; i < this->numberOfElements; i++)
 	{
@@ -61,6 +60,11 @@ void Set::resize()
 
 bool Set::addElement(const int element)
 {
+	if (this->numberOfElements == capacity)
+	{
+		this->resize();
+	}
+
 	for (int i = 0; i < this->numberOfElements; i++)
 	{
 		if (this->elements[i] == element)
@@ -68,10 +72,7 @@ bool Set::addElement(const int element)
 			return false;
 		}
 	}
-	if (this->numberOfElements + 1 > capacity)
-	{
-		this->resize();
-	}
+	
 	this->elements[this->numberOfElements] = element;
 	this->numberOfElements++;
 	return true;
@@ -101,7 +102,7 @@ bool Set::deleteElement(const int element)
 	return hasDeleted;
 }
 
-void Set::print()
+void Set::print() const
 {
 	for (int i = 0; i < this->numberOfElements; i++)
 	{
@@ -110,7 +111,7 @@ void Set::print()
 	std::cout << "\n";
 }
 
-void Set::setUnion(const Set other)
+void Set::setUnion(Set const& other)
 {
 	for (int i = 0; i < other.numberOfElements; i++)
 	{
@@ -118,15 +119,14 @@ void Set::setUnion(const Set other)
 	}
 }
 
-void Set::setIntersection(const Set other)
+void Set::setIntersection(Set const& other)
 {
-	Set intersection;
-	for (int i = 0; i < other.numberOfElements; i++)
+	for (int i = 0; i < this->numberOfElements; i++)
 	{
-		if (this->contains(other.elements[i]))
+		if (!other.contains(this->elements[i]))
 		{
-			intersection.addElement(other.elements[i]);
+			this->deleteElement(this->elements[i]);
+			i--;
 		}
 	}
-	*this = intersection;
 }
