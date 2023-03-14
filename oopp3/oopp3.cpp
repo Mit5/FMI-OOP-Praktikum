@@ -17,6 +17,8 @@ int main()
     otherSet.print();
     mySet.setUnion(otherSet);
     mySet.print();
+    mySet.setIntersection(otherSet);
+    mySet.print();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

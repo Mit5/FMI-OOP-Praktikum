@@ -7,8 +7,6 @@ class Set
 
 	void resize();
 
-	bool contains(int element);
-
 public:
 	Set();
 
@@ -18,14 +16,16 @@ public:
 
 	~Set();
 
+	bool contains(int element) const;
+
 	bool addElement(const int element);
 
 	bool deleteElement(const int element);
 
-	void print();
+	void print() const;
 
-	void setUnion(const Set other);
+	void setUnion(Set const& other);
 
-	void setIntersection(const Set other);
+	void setIntersection(Set const& other);
 };
 
