@@ -1,22 +1,39 @@
 #include "Set.h"
 #include<iostream>
 
+int INITIAL_CAPACITY = 10;
+
 Set::Set()
 {
-	this->capacity = 2;
+	this->capacity = INITIAL_CAPACITY;
 	this->numberOfElements = 0;
 	this->elements = new int[capacity];
 }
 
-Set::Set(Set const& other)
+void Set::copy(int const* elements, int numElements, int capacity)
 {
-	this->capacity = other.capacity;
-	this->numberOfElements = other.numberOfElements;
-	delete[] this->elements;
-	this->elements = other.elements;
+	this->capacity = capacity;
+	this->numberOfElements = numElements;
+
+	if (this->elements != nullptr)
+	{
+		delete[] this->elements;
+	}
+
+	this->elements = new int[this->capacity];
+
+	for (int i = 0; i < this->numberOfElements; i++) 
+	{
+		this->elements[i] = elements[i];
+	}
 }
 
-Set::Set(Set&& other)
+Set::Set(const Set& other)
+{
+	copy(other.elements, other.numberOfElements, other.capacity);
+}
+
+Set::Set(Set&& other) noexcept
 {
 	this->elements = other.elements;
 	this->capacity = other.capacity;
@@ -43,14 +60,11 @@ Set& Set::operator= (Set&& other)
 	return *this;
 }
 
-Set& Set::operator= (Set const& other)
+Set& Set::operator= (const Set& other)
 {
 	if (this != &other)
 	{
-		this->capacity = other.capacity;
-		this->numberOfElements = other.numberOfElements;
-		delete[] this->elements;
-		this->elements = other.elements;
+		copy(other.elements, other.numberOfElements, other.capacity);
 	}
 	return *this;
 }
@@ -83,6 +97,31 @@ void Set::resize()
 	delete[] this->elements;
 	this->elements = copyElements;
 	this->capacity *= 2;
+}
+
+int Set::getNumberOfElements() const
+{
+	return this->numberOfElements;
+}
+
+int Set::getCapacity() const
+{
+	return this->capacity;
+}
+
+int* Set::getElements() const
+{
+	return this->elements;
+}
+
+void Set::setNumberOfElements(int numberOfElements)
+{
+	if (numberOfElements < 0)
+	{
+		numberOfElements = 0;
+	}
+	
+
 }
 
 bool Set::addElement(const int element)
@@ -158,10 +197,25 @@ void Set::setIntersection(Set const& other)
 	}
 }
 
-Set& operator+ (const Set& first, const Set& second)
+Set operator+ (const Set& first, const Set& second)
 {
 	Set result;
 	result.setUnion(first);
 	result.setUnion(second);
 	return result;
+}
+
+Set& Set::operator+ (int number)
+{
+	for (int i = 0; i < this->numberOfElements; i++)
+	{
+		elements[i] += number;
+	}
+	return *this;
+}
+
+Set& Set::operator+= (const Set& other)
+{
+	*this = (*this + other);
+	return *this;
 }
