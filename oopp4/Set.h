@@ -8,17 +8,36 @@ class Set
 	void resize();
 
 public:
+
+	int getNumberOfElements() const;
+
+	int getCapacity() const;
+
+	int* getElements() const;
+
+	void setNumberOfElements(int numberOfElements);
+
+	void setCapacity(int capacity);
+
+	void setElements(int* elements);
+
 	Set();
 
-	Set(Set const& other);
+	Set(const Set& other);
 
-	Set(Set&& other);
+	Set(Set&& other) noexcept;
 
-	Set& operator= (Set const& other);
+	Set& operator+ (int number);
+
+	Set& operator= (const Set& other);
 
 	Set& operator= (Set&& other);
 
+	Set& operator+= (const Set& other);
+
 	~Set();
+
+	void copy(int const* elements, int numElements, int capacity);
 
 	bool contains(int element) const;
 
@@ -33,4 +52,5 @@ public:
 	void setIntersection(Set const& other);
 };
 
-Set& operator+ (const Set& first, const Set& second);
+Set operator+ (const Set& first, const Set& second);
+

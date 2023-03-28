@@ -6,14 +6,15 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
     Set first,second;
     first.addElement(5);
     first.addElement(6);
     second.addElement(7);
-    Set third;
-    third = first + second;
+    Set third(first + second);
     third.print();
+    first += second;
+    first = 3 + first;
+    first.print();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
