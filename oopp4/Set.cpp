@@ -124,6 +124,17 @@ void Set::setNumberOfElements(int numberOfElements)
 
 }
 
+void Set::setCapacity(int capacity)
+{
+	this->capacity = capacity;
+}
+
+void Set::setElements(int* elements)
+{
+	delete[] this->elements;
+	this->elements = elements;
+}
+
 bool Set::addElement(const int element)
 {
 	if (this->numberOfElements == capacity)

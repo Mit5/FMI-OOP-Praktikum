@@ -17,9 +17,9 @@ public:
 
 	void setNumberOfElements(int numberOfElements);
 
-	void setCapacity();
+	void setCapacity(int capacity);
 
-	void setElements();
+	void setElements(int* elements);
 
 	Set();
 
