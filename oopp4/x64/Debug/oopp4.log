@@ -1,2 +1,6 @@
-﻿  oopp4.cpp
-  oopp4.vcxproj -> C:\Users\Mitko\Desktop\FMI-OOP-Praktikum\x64\Debug\oopp4.exe
+﻿  Set.cpp
+  oopp4.cpp
+C:\Users\Mitko\Desktop\FMI-OOP-Praktikum\oopp4\oopp4.cpp(16,22): error C2678: binary '+': no operator found which takes a left-hand operand of type 'int' (or there is no acceptable conversion)
+C:\Users\Mitko\Desktop\FMI-OOP-Praktikum\oopp4\Set.h(55,5): message : could be 'Set operator +(const Set &,const Set &)'
+C:\Users\Mitko\Desktop\FMI-OOP-Praktikum\oopp4\oopp4.cpp(16,22): message : while trying to match the argument list '(int, Set)'
+  Generating Code...
