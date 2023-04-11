@@ -3,6 +3,19 @@
 
 int MAX_SIZE = 32;
 
+int stringToNum(char* string)
+{
+	int length = strlen(string),result = 0;
+	while (length)
+	{
+		result *= 10;
+		result += (*string) - '0';
+		string++;
+		length--;
+	}
+	return result;
+}
+
 void User::setName(char* string)
 {
 	if (strlen(string) >= MAX_SIZE)
@@ -108,7 +121,7 @@ bool User::operator==(User& other)
 
 void User::writeUser()
 {
-	std::ofstream file("Users.txt", std::ios::app, std::ios::binary);
+	std::ofstream file("Users.txt", std::ios::app);
 
 	if (!file.is_open())
 	{
@@ -117,7 +130,8 @@ void User::writeUser()
 
 	if (!checkUser())
 	{
-		file.write((char*)this, sizeof(*this));
+		file << strlen(username) << " " << username << " " << strlen(password) << " " << password << "\n";
+		//file.write((char*)this, sizeof(*this));
 	}
 
 	file.close();
@@ -125,7 +139,7 @@ void User::writeUser()
 
 bool User::checkUser()
 {
-	std::ifstream file("Users.txt",std::ios::binary);
+	std::ifstream file("Users.txt");
 
 	if (!file.is_open())
 	{
@@ -134,11 +148,27 @@ bool User::checkUser()
 
 
 	User user;
+	int buffsize=32;
+	char nameSize[32], passSize[32];
 	while (!file.eof())
 	{
-		file.read((char*)&user, sizeof(user));
+		file.getline(nameSize,buffsize,' ');
+		int nameSizeNum = stringToNum(nameSize)+1;
+		
+		char* name = new char[nameSizeNum];
+		file.getline(name, nameSizeNum, ' ');
+
+		file.getline(passSize, buffsize, ' ');
+		int passSizeNum = stringToNum(passSize)+1;
+
+		char* pass = new char[passSizeNum];
+		file.getline(pass, passSizeNum, ' ');
+
+		user.setName(name);
+		user.setPassword(pass);
 		if (user == *this)
 		{
+			std::cout << "User already in system!";
 			file.close();
 			return true;
 		}

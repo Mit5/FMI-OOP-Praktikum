@@ -7,13 +7,14 @@
 int main()
 {
     User user;
-    /*user.setName((char*)"Pesho");
+    user.setName((char*)"Pesho");
     user.setPassword((char*)"PeshoPass");
+    user.checkUser();
     user.writeUser();
     user.setName((char*)"Gosho");
     user.setPassword((char*)"GoshoPass");
-    user.writeUser();*/
-    readAllUsers();
+    user.writeUser();
+    
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
