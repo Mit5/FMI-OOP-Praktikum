@@ -142,12 +142,24 @@
     <ClCompile Include="Animal.cpp" />
     <ClCompile Include="Cat.cpp" />
     <ClCompile Include="Dog.cpp" />
+    <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="ITPerson.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="oopp9.cpp" />
+    <ClCompile Include="Programmer.cpp" />
+    <ClCompile Include="Project.cpp" />
+    <ClCompile Include="QA.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Cat.h" />
     <ClInclude Include="Dog.h" />
+    <ClInclude Include="Employee.h" />
+    <ClInclude Include="ITPerson.h" />
+    <ClInclude Include="Manager.h" />
+    <ClInclude Include="Programmer.h" />
+    <ClInclude Include="Project.h" />
+    <ClInclude Include="QA.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,6 +9,7 @@ void ITPerson::resize()
 	}
 	delete projects;
 	projects = newProjects;
+	capacity *= 2;
 }
 
 ITPerson::ITPerson() : Employee(), projects({nullptr}), projectsCount(0), capacity(10)
