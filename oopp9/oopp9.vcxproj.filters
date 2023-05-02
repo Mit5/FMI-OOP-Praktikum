@@ -27,6 +27,24 @@
     <ClCompile Include="Dog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Employee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ITPerson.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Programmer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Project.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animal.h">
@@ -36,6 +54,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Dog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Employee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ITPerson.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Programmer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Project.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
