@@ -18,3 +18,8 @@ std::ostream& operator<<(std::ostream& os, HistoricalLandmark& landmark)
 {
 	return os << landmark.ToString() << " " << landmark.yearOfEvent << "\n";
 }
+
+std::istream& operator>>(std::istream& is, HistoricalLandmark& landmark)
+{
+	// TODO: insert return statement here
+}

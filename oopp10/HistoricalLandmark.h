@@ -9,6 +9,8 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, HistoricalLandmark& landmark);
 
+	friend std::istream& operator>>(std::istream& is, HistoricalLandmark& landmark);
+
 	void writeToFile();
 };
 
